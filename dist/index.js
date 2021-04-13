@@ -17,7 +17,4 @@ exports.default = {
     ReliableTxtFile: ReliableTxtFile_1.default,
     StringUtil: StringUtil_1.default
 };
-const text = "abc xyz";
-const reliableTxtDocument = new ReliableTxtDocumentServer_1.default(text);
-console.log(reliableTxtDocument);
 //# sourceMappingURL=index.js.map

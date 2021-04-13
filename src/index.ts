@@ -15,7 +15,3 @@ export default {
 
     StringUtil
 };
-
-const text = "abc xyz";
-const reliableTxtDocument = new ReliableTxtDocumentServer(text);
-console.log(reliableTxtDocument);
