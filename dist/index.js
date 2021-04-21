@@ -3,18 +3,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.StringUtil = exports.ReliableTxtFile = exports.ReliableTxtException = exports.ReliableTxtEncoding = exports.ReliableTxtDocumentServer = exports.ReliableTxtDocument = void 0;
 const ReliableTxtDocument_1 = __importDefault(require("./reliabletxt/ReliableTxtDocument"));
+exports.ReliableTxtDocument = ReliableTxtDocument_1.default;
 const ReliableTxtDocumentServer_1 = __importDefault(require("./reliabletxt/ReliableTxtDocumentServer"));
+exports.ReliableTxtDocumentServer = ReliableTxtDocumentServer_1.default;
 const ReliableTxtEncoding_1 = __importDefault(require("./reliabletxt/ReliableTxtEncoding"));
+exports.ReliableTxtEncoding = ReliableTxtEncoding_1.default;
 const ReliableTxtException_1 = __importDefault(require("./reliabletxt/ReliableTxtException"));
+exports.ReliableTxtException = ReliableTxtException_1.default;
 const ReliableTxtFile_1 = __importDefault(require("./reliabletxt/ReliableTxtFile"));
+exports.ReliableTxtFile = ReliableTxtFile_1.default;
 const StringUtil_1 = __importDefault(require("./reliabletxt/StringUtil"));
-exports.default = {
-    ReliableTxtDocument: ReliableTxtDocument_1.default,
-    ReliableTxtDocumentServer: ReliableTxtDocumentServer_1.default,
-    ReliableTxtEncoding: ReliableTxtEncoding_1.default,
-    ReliableTxtException: ReliableTxtException_1.default,
-    ReliableTxtFile: ReliableTxtFile_1.default,
-    StringUtil: StringUtil_1.default
-};
+exports.StringUtil = StringUtil_1.default;
 //# sourceMappingURL=index.js.map

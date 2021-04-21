@@ -6,7 +6,7 @@ import ReliableTxtFile from "./reliabletxt/ReliableTxtFile";
 
 import StringUtil from "./reliabletxt/StringUtil";
 
-export default {
+export {
     ReliableTxtDocument,
     ReliableTxtDocumentServer,
     ReliableTxtEncoding,
