@@ -1,4 +1,4 @@
-## [0.0.1](https://github.com/GELight/reliabletxt) (2021-04-07)
+## [0.0.1](https://github.com/GELight/reliabletxt) (2021-04-24)
 
 ### Initial 
 
