@@ -6,8 +6,8 @@
 clear
 
 echo "##############################################"
-GIT_RELEASE_VERSION=$(git describe --abbrev=0 --tags)
-GIT_RELEASE_VERSION=$(echo $GIT_RELEASE_VERSION| cut -d'v' -f 2)
+GIT_RELEASE_TAG=$(git describe --abbrev=0 --tags)
+GIT_RELEASE_VERSION=$(echo $GIT_RELEASE_TAG| cut -d'v' -f 2)
 
 echo "ReliableTXT - Current Release Version $GIT_RELEASE_VERSION"
 echo "##############################################"
@@ -29,14 +29,15 @@ if [[ $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
             echo "Release version $VERSION already exists on git!"
         else
             echo $(jq . package.json | jq ".version = \"$VERSION\"") > package.json
-            npm install
-            npm run build
-            git add .
-            git commit -m "Release build v$VERSION"
-            git push
-            git tag -a v$VERSION -m "Release build v$VERSION"
-            git push --tags
-            npm publish --access public
+            auto-changelog -p --tag-prefix 'v'
+            # npm install
+            # npm run build
+            # git add .
+            # git commit -m "Release build v$VERSION"
+            # git push
+            # git tag -a v$VERSION -m "Release build v$VERSION"
+            # git push --tags
+            # npm publish --access public
         fi
 
 
