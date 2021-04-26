@@ -29,17 +29,16 @@ if [[ $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
             echo "Release version $VERSION already exists on git!"
         else
             echo $(jq . package.json | jq ".version = \"$VERSION\"") > package.json
-            auto-changelog -p --tag-prefix 'v'
-            # npm install
-            # npm run build
-            # git add .
-            # git commit -m "Release build v$VERSION"
-            # git push
-            # git tag -a v$VERSION -m "Release build v$VERSION"
-            # git push --tags
-            # npm publish --access public
+            auto-changelog -u -p --tag-prefix 'v'
+            npm install
+            npm run build
+            git add .
+            git commit -m "Release build v$VERSION"
+            git push
+            git tag -a v$VERSION -m "Release build v$VERSION"
+            git push --tags
+            npm publish --access public
         fi
-
 
     fi
 
