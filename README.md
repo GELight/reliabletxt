@@ -11,5 +11,5 @@ Detailed release notes for each version are available on [GitHub](https://github
 
 | Page | Link |
 | ---- | ---- |
-| Github | https://github.com/ReliableTXT/ReliableTXT |
-| Homepage | https://www.reliabletxt.com |
+| Github | https://github.com/Stenway |
+| Homepage | https://dev.stenway.com/ReliableTXT/ |
