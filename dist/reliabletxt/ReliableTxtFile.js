@@ -32,7 +32,7 @@ class ReliableTxtFile {
     save(filePath, content, encoding) {
         this.setEncoding(encoding);
         try {
-            fs_1.writeFileSync(filePath, "\ufeff" + content, this.encoding);
+            (0, fs_1.writeFileSync)(filePath, "\ufeff" + content, this.encoding);
         }
         catch (e) {
             console.error(e);
@@ -41,13 +41,13 @@ class ReliableTxtFile {
     }
     load(filePath) {
         try {
-            const fileBuffer = fs_1.readFileSync(filePath, Object.assign({ flag: "r" }));
+            const fileBuffer = (0, fs_1.readFileSync)(filePath, Object.assign({ flag: "r" }));
             const detectedEncoding = ReliableTxtFile.getEncodingFromBuffer(fileBuffer);
             if (detectedEncoding === null) {
                 throw new ReliableTxtException_1.default("Document does not have a ReliableTXT preamble");
             }
             this.setEncoding(detectedEncoding);
-            const fileContent = fs_1.readFileSync(filePath, Object.assign({ encoding: this.encoding, flag: "r" })).toString();
+            const fileContent = (0, fs_1.readFileSync)(filePath, Object.assign({ encoding: this.encoding, flag: "r" })).toString();
             this.fileContent = fileContent.slice(1);
             return this;
         }
