@@ -16,4 +16,7 @@ const ReliableTxtFile_1 = __importDefault(require("./reliabletxt/ReliableTxtFile
 exports.ReliableTxtFile = ReliableTxtFile_1.default;
 const StringUtil_1 = __importDefault(require("./reliabletxt/StringUtil"));
 exports.StringUtil = StringUtil_1.default;
+const reliableTxtDocument = new ReliableTxtDocumentServer_1.default();
+const encoding = reliableTxtDocument.getEncoding();
+console.log(encoding); // utf8
 //# sourceMappingURL=index.js.map
