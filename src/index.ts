@@ -15,8 +15,3 @@ export {
 
     StringUtil
 };
-
-const reliableTxtDocument = new ReliableTxtDocumentServer();
-const encoding: ReliableTxtEncoding = reliableTxtDocument.getEncoding();
-
-console.log(encoding); // utf8
