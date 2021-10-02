@@ -1,11 +1,11 @@
 import ReliableTxtDocument from "../src/reliabletxt/ReliableTxtDocument";
+import TypeException from "../src/reliabletxt/TypeException";
 
 describe("ReliableTxtDocument", () => {
 
     it.each`
         param1      | param2    | expected
         ${""}       | ${""}     | ${"\n"}
-        ${undefined}| ${null}   | ${"\n"}
         ${"abc"}    | ${"ABC"}  | ${"abc\nABC"}
         ${"123"}    | ${"456"}  | ${"123\n456"}
         ${""}       | ${"test"} | ${"\ntest"}
@@ -19,10 +19,20 @@ describe("ReliableTxtDocument", () => {
         });
 
     it.each`
+        param1
+        ${null}
+        ${undefined}
+        ${1}
+        ${1.2}
+        ${[]}
+        ${{}}
+    `(`constructor($param1) - Failed with TypeException through wrong input parameter'`, ({ param1 }) => {
+        expect(() => new ReliableTxtDocument(param1)).toThrow(TypeException);
+    });
+
+    it.each`
         text            | expected
         ${""}           | ${""}
-        ${undefined}    | ${""}
-        ${null}         | ${""}
         ${"abc"}        | ${"abc"}
         ${"123"}        | ${"123"}
         ${"123\nabc"}   | ${"123\nabc"}
@@ -37,9 +47,22 @@ describe("ReliableTxtDocument", () => {
         });
 
     it.each`
+        text
+        ${null}
+        ${undefined}
+        ${1}
+        ${1.2}
+        ${[]}
+        ${{}}
+    `(`setText('$text') - Failed with TypeException through wrong input parameter'`, ({ text }) => {
+        // when
+        const reliableTxtDocument = new ReliableTxtDocument();
+        // then
+        expect(() => reliableTxtDocument.setText(text)).toThrow(TypeException);
+    });
+
+    it.each`
         codePoints                      | expected
-        ${null}                         | ${""}
-        ${undefined}                    | ${""}
         ${[65, 90]}                     | ${"AZ"}
         ${[0x404]}                      | ${"Є"}
         ${[42]}                         | ${"*"}
@@ -55,9 +78,22 @@ describe("ReliableTxtDocument", () => {
         });
 
     it.each`
+        codePoints
+        ${null}
+        ${undefined}
+        ${1}
+        ${1.2}
+        ${{}}
+        ${[""]}
+    `(`setTextByCodePoints($codePoints) - Failed with TypeException through wrong input parameter'`, ({ codePoints }) => {
+        // when
+        const reliableTxtDocument = new ReliableTxtDocument();
+        // then
+        expect(() => reliableTxtDocument.setTextByCodePoints(codePoints)).toThrow(TypeException);
+    });
+
+    it.each`
         text                            | expected
-        ${null}                         | ${[]}
-        ${undefined}                    | ${[]}
         ${""}                           | ${[]}
         ${"abc"}                        | ${[97, 98, 99]}
         ${"abc 123"}                    | ${[97, 98, 99, 32, 49, 50, 51]}
@@ -78,8 +114,6 @@ describe("ReliableTxtDocument", () => {
     it.each`
         param1      | param2    | expected
         ${""}       | ${""}     | ${"\n"}
-        ${""}       | ${null}   | ${"\n"}
-        ${undefined}| ${null}   | ${"\n"}
         ${"abc"}    | ${"ABC"}  | ${"abc\nABC"}
         ${"123"}    | ${"456"}  | ${"123\n456"}
         ${""}       | ${"test"} | ${"\ntest"}
@@ -96,8 +130,6 @@ describe("ReliableTxtDocument", () => {
     it.each`
         param1          | param2        | expected
         ${""}           | ${""}         | ${["", ""]}
-        ${""}           | ${null}       | ${["", ""]}
-        ${undefined}    | ${null}       | ${["", ""]}
         ${"abc"}        | ${"ABC"}      | ${["abc", "ABC"]}
         ${"123"}        | ${"456"}      | ${["123", "456"]}
         ${""}           | ${"test"}     | ${["", "test"]}
@@ -111,6 +143,22 @@ describe("ReliableTxtDocument", () => {
             // then
             expect(reliableTxtDocument.getLines()).toEqual(expected);
         });
+
+    it.each`
+        line
+        ${null}
+        ${undefined}
+        ${1}
+        ${1.2}
+        ${{}}
+        ${[]}
+        ${[1]}
+    `(`setLines($param1) - Failed with TypeException through wrong input parameter'`, ({ line }) => {
+        // when
+        const reliableTxtDocument = new ReliableTxtDocument();
+        // then
+        expect(() => reliableTxtDocument.setLines(line)).toThrow(TypeException);
+    });
 
     it(`toString() - content will returned as string`, () => {
         // when
@@ -173,6 +221,19 @@ describe("ReliableTxtDocument", () => {
 東 	U+6771    E6_9D_B1      6771        "CJK Unified Ideograph-6771"
 𝄞 	U+1D11E   F0_9D_84_9E   D834_DD1E   "Musical Symbol G Clef"
 𠀇 	U+20007   F0_A0_80_87   D840_DC07   "CJK Unified Ideograph-20007"`);
+    });
+
+    it.each`
+        param
+        ${null}
+        ${undefined}
+        ${{}}
+        ${123}
+        ${"abc"}
+        ${[72]}
+        ${[72, "a"]}
+    `(`join($param) - convert string array to string failed by wrong input parameter`, ({ param }) => {
+        expect(() => ReliableTxtDocument.join(param)).toThrow(TypeException);
     });
 
 });

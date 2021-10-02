@@ -6,6 +6,8 @@ import ReliableTxtFile from "./reliabletxt/ReliableTxtFile";
 
 import StringUtil from "./reliabletxt/StringUtil";
 
+import TypeGuard from "./reliabletxt/TypeGuard";
+
 export {
     ReliableTxtDocument,
     ReliableTxtDocumentServer,
@@ -13,5 +15,7 @@ export {
     ReliableTxtException,
     ReliableTxtFile,
 
-    StringUtil
+    StringUtil,
+
+    TypeGuard
 };
