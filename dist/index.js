@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TypeGuard = exports.StringUtil = exports.ReliableTxtFile = exports.ReliableTxtException = exports.ReliableTxtEncoding = exports.ReliableTxtDocumentServer = exports.ReliableTxtDocument = void 0;
+exports.TypeException = exports.TypeGuard = exports.StringUtil = exports.ReliableTxtFile = exports.ReliableTxtException = exports.ReliableTxtEncoding = exports.ReliableTxtDocumentServer = exports.ReliableTxtDocument = void 0;
 const ReliableTxtDocument_1 = __importDefault(require("./reliabletxt/ReliableTxtDocument"));
 exports.ReliableTxtDocument = ReliableTxtDocument_1.default;
 const ReliableTxtDocumentServer_1 = __importDefault(require("./reliabletxt/ReliableTxtDocumentServer"));
@@ -18,4 +18,6 @@ const StringUtil_1 = __importDefault(require("./reliabletxt/StringUtil"));
 exports.StringUtil = StringUtil_1.default;
 const TypeGuard_1 = __importDefault(require("./reliabletxt/TypeGuard"));
 exports.TypeGuard = TypeGuard_1.default;
+const TypeException_1 = __importDefault(require("./reliabletxt/TypeException"));
+exports.TypeException = TypeException_1.default;
 //# sourceMappingURL=index.js.map
