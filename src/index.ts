@@ -7,6 +7,7 @@ import ReliableTxtFile from "./reliabletxt/ReliableTxtFile";
 import StringUtil from "./reliabletxt/StringUtil";
 
 import TypeGuard from "./reliabletxt/TypeGuard";
+import TypeException from "./reliabletxt/TypeException";
 
 export {
     ReliableTxtDocument,
@@ -17,5 +18,6 @@ export {
 
     StringUtil,
 
-    TypeGuard
+    TypeGuard,
+    TypeException
 };
